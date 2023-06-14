@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SwadeshProperties_DocumentManagement.Models.DocumentInformation>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between bg-primary text-white p-2">
+            <h6>Document Infomation</h6>
+            <div>
+               
+                <a href="@Url.Action("Create", "Info")" class="btn btn-light btn-sm" ><i class="bi bi-plus"></i>  Create New</a>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Category</th>
+                    <th>Category Namea</th>
+                    <th>Document Date</th>
+                    <th>...</th>
+                </tr>
+            </thead>
+            <tbody id="categories">
+                @foreach (var d in Model)
+                {
+                    <tr id="doc_@d.DocumentyIdentity">
+                        <td>@d.DocumentCategoryInfo.CategoryName</td>
+                        <td>@d.DocumentName</td>
+                        <td>@string.Format($"{d.DocumentDate:dd/MM/yyyy}")</td>
+
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm edit" data-pk="@d.DocumentyIdentity"><i class="bi bi-pencil"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section styles
+{
+    <link href="~/Content/Icons/font/bootstrap-icons.css" rel="stylesheet" />
+}

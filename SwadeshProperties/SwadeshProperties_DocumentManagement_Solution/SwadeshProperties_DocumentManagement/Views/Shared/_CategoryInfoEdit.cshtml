@@ -1,0 +1,40 @@
+﻿@model SwadeshProperties_DocumentManagement.Models.DocumentCategoryInfo
+@using (Html.BeginForm("CategoryInsert", "Documets", FormMethod.Post, new { id = "fcat-edit" }))
+{
+    @Html.HiddenFor(x => x.CategoryId)
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Category Name</th>
+                <th>Category Name Bangla</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control form-control-sm" })
+                    <div>
+                        @Html.ValidationMessageFor(x => x.CategoryName, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.CategoryNameBangla, new { @class = "form-control form-control-sm" })
+                    <div>
+                        @Html.ValidationMessageFor(x => x.CategoryNameBangla, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.Description, new { @class = "form-control form-control-sm" })
+                    <div>
+                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm" id="update-submit">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
